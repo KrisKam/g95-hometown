@@ -19,10 +19,9 @@ const createStudent = (newData) => {
 };
 
 const updateStudent = (id) => {
-  return knex.select()
-    .from("studentinfo")
+  return knex("studentinfo")
       .where("id", id)
-        .delete();
+        .update({prevOccupation: "previous occupation"});
 };
 
 const deleting = (id) => {
@@ -37,6 +36,7 @@ module.exports = {
   allStudents,
   getStudent,
   createStudent,
+  updateStudent,
   deleting
 
 }

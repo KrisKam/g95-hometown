@@ -13,15 +13,21 @@ app.get("/", (request, response, next) => {
     .then(result => response.json({students: result}))
 });
 
+app.get("/:id", (request, response, next) => {
+  queries.getStudent(request.params.id)
+    .then(result => response.json({student: result}))
+});
+
 app.post("/", (request, response, next) => {
   queries.createStudent(request.body)
     .then(newStudentData => response.json({newStudent: newStudentData}));
 });
 
-app.get("/:id", (request, response, next) => {
-  queries.getStudent(request.params.id)
-    .then(result => response.json({student: result}))
-});
+app.put("/:id", (request, response, next) => {
+  queries.updateStudent(request.params.id)
+    .then(result => response.json({updatedStudent: result}))
+
+})
 
 app.delete("/:id", (request, response, next) => {
   queries.deleting(request.params.id)
