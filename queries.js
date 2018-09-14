@@ -3,7 +3,8 @@ const knex = require("knex")(connection);
 
 const allStudents = () => {
   return knex.select()
-    .from("studentinfo");
+    .from("studentinfo")
+      .orderBy("id", "ascending");
 };
 
 const getStudent = (id) => {
@@ -18,10 +19,10 @@ const createStudent = (newData) => {
     .returning('*');
 };
 
-const updateStudent = (id) => {
+const updateStudent = (id, updatedData) => {
   return knex("studentinfo")
       .where("id", id)
-        .update({prevOccupation: "previous occupation"});
+        .update(updatedData);
 };
 
 const deleting = (id) => {
