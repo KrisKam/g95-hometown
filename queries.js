@@ -3,30 +3,31 @@ const knex = require("knex")(connection);
 
 const allStudents = () => {
   return knex.select()
-    .from("students");
+    .from("studentinfo");
 };
 
-const getStudent = () => {
+const getStudent = (id) => {
   return knex.select()
-    .from("students")
+    .from("studentinfo")
       .where("id", id);
 };
 
 const createStudent = (newData) => {
-  return knex("students")
-    .insert(newData, ["id"]);
+  return knex("studentinfo")
+    .insert(newData)
+    .returning('*');
 };
 
 const updateStudent = (id) => {
   return knex.select()
-    .from("students")
+    .from("studentinfo")
       .where("id", id)
         .delete();
 };
 
 const deleting = (id) => {
   return knex.select()
-    .from("students")
+    .from("studentinfo")
       .where("id", id)
         .delete();
 };
