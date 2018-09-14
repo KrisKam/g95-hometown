@@ -24,7 +24,7 @@ app.post("/", (request, response, next) => {
 });
 
 app.put("/:id", (request, response, next) => {
-  queries.updateStudent(request.params.id)
+  queries.updateStudent(request.body.id)
     .then(result => response.json({updatedStudent: result}))
 
 })
