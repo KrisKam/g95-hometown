@@ -4,13 +4,13 @@ const knex = require("knex")(connection);
 const allStudents = () => {
   return knex.select()
     .from("studentinfo")
-      .orderBy("id", "ascending");
+    .orderBy("id", "ascending");
 };
 
 const getStudent = (id) => {
   return knex.select()
     .from("studentinfo")
-      .where("id", id);
+    .where("id", id);
 };
 
 const createStudent = (newData) => {
@@ -21,15 +21,15 @@ const createStudent = (newData) => {
 
 const updateStudent = (id, updatedData) => {
   return knex("studentinfo")
-      .where("id", id)
-        .update(updatedData);
+    .where("id", id)
+    .update(updatedData);
 };
 
 const deleting = (id) => {
   return knex.select()
     .from("studentinfo")
-      .where("id", id)
-        .delete();
+    .where("id", id)
+    .delete();
 };
 
 module.exports = {
